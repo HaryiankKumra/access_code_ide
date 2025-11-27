@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+# 🚀 AccessCode IDE
 
-## Project info
+**A fully accessible, AI-powered web-based IDE for visually impaired & dyslexic learners.**  
+Built with **React, Vite, TypeScript, TailwindCSS, shadcn-ui, Monaco Editor, FastAPI**, and the **Piston** execution engine.
 
-**URL**: https://lovable.dev/projects/e401ae50-8c58-4a5e-8e0c-1480e45628c1
+---
 
-## How can I edit this code?
+## 🌟 Overview
 
-There are several ways of editing your application.
+**AccessCode IDE** is an interactive, accessibility-first coding environment designed for everyone — especially users with visual impairments, dyslexia, or motor difficulties.
 
-**Use Lovable**
+The platform combines:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e401ae50-8c58-4a5e-8e0c-1480e45628c1) and start prompting.
+- A modern in-browser code editor  
+- Real-time AI coding assistant  
+- Text-to-speech (TTS) for code, output, and chat responses  
+- Multi-language code execution  
+- Screen-reader optimized UI  
+- High-contrast & dyslexia-friendly design  
+- Audio-only mode for blind users  
+- Project saving & management  
+- Interactive docs, tutorials, roadmap & changelog  
+- Subscription capabilities  
 
-Changes made via Lovable will be committed automatically to this repo.
+**Mission:** make programming education accessible to all.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## ✨ Key Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🧠 AI Coding Assistant
+- Explains code, debugs issues, and answers conceptual questions  
+- Integrated TTS (pause/resume/stop controls)  
+- Keyboard-first and screen-reader friendly
 
-Follow these steps:
+### 💻 Multi-language Code Editor
+Powered by **Monaco**, supporting:
+- Python  
+- JavaScript  
+- C++  
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Editor features:
+- Syntax highlighting & autocomplete  
+- Adjustable font, spacing, and dyslexia-friendly font option  
+- Read Code / Read Output with TTS  
+- Executes code via backend sandbox (Piston)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 🔊 Full Accessibility Suite
+- Screen reader support  
+- Global audio controller (Play/Pause/Stop)  
+- High contrast themes & OpenDyslexic font option  
+- Keyboard navigation and shortcuts  
+- Audio-only mode for blind users
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 📂 Projects & Cloud Save
+- Save, duplicate, rename, delete, and export projects  
+- File tree support for multi-file projects  
+- Organize by language
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 📚 Explore Pages
+- Documentation  
+- Tutorials  
+- Roadmap & Changelog  
+- Profile & Settings  
+- Audio Mode  
+- Admin Dashboard (role-based)
 
-**Edit a file directly in GitHub**
+### 💳 Subscription System
+- Free vs Premium tiers  
+- Payment integration ready (Stripe / LemonSqueezy)  
+- Usage quotas, billing history, and plan management
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🏗️ Architecture
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Frontend (React + Vite + TypeScript)
+- Component-driven UI with TailwindCSS & shadcn-ui  
+- Monaco Editor for in-browser coding  
+- Global Audio Controller (Web Speech API + server fallback)  
+- Next.js/Vite routing (depending on setup)
 
-## What technologies are used for this project?
+### Backend (FastAPI)
+- `/api/run` → Executes code via Piston or configurable sandbox  
+- `/api/tts` → Generates/serves TTS audio (optional)  
+- `/api/projects` → CRUD for projects  
+- `/api/auth` → Authentication & user management  
+- `/api/users` → Profiles, usage, and subscription state
 
-This project is built with:
+### Execution Engine
+- **Piston API** (or self-hosted Piston) for sandboxed code execution (Python / JS / C++)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Database & Cache
+- PostgreSQL for persistent data (users, projects, usage)  
+- Redis for caching, rate-limits, and ephemeral data (optional)
 
-## How can I deploy this project?
+### Storage
+- S3 / Supabase Storage for large assets, project zips, and audio files
 
-Simply open [Lovable](https://lovable.dev/projects/e401ae50-8c58-4a5e-8e0c-1480e45628c1) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 🧱 System Diagram (high-level)
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
