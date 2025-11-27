@@ -15,7 +15,6 @@ export interface AIChatbotRef {
   askQuestion: (question: string) => void;
 }
 
-const GEMINI_API_KEY = "AIzaSyBl9Y_yCF4sochzaGEtKw26Q1ziEn9tpt4";
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
 export const AIChatbot = forwardRef<AIChatbotRef>((_, ref) => {
