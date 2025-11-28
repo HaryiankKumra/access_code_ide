@@ -14,8 +14,12 @@ interface Message {
 export interface AIChatbotRef {
   askQuestion: (question: string) => void;
 }
-const GEMINI_API_KEY = "AIzaSyBl9Y_yCF4sochzaGEtKw26Q1ziEn9tpt4";
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+
+// Replace hardcoded API values with env-based configuration
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
+const GEMINI_API_BASE = (import.meta.env.VITE_GEMINI_API_BASE as string | undefined) || "https://generativelanguage.googleapis.com/v1beta";
+const GEMINI_MODEL = (import.meta.env.VITE_GEMINI_MODEL as string | undefined) || "gemini-2.5-flash";
+const GEMINI_API_URL = `${GEMINI_API_BASE}/models/${GEMINI_MODEL}:generateContent`;
 
 export const AIChatbot = forwardRef<AIChatbotRef>((_, ref) => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -43,6 +47,17 @@ export const AIChatbot = forwardRef<AIChatbotRef>((_, ref) => {
     if (!customMessage) setInput("");
     setMessages(prev => [...prev, { role: 'user', content: messageToSend }]);
     setIsLoading(true);
+
+    // Guard: require API key from .env
+    if (!GEMINI_API_KEY) {
+      toast({
+        title: "Missing API key",
+        description: "Set VITE_GEMINI_API_KEY in your .env file and restart the dev server.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
